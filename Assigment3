@@ -50,7 +50,7 @@ class Manufacture {
         super(manufacture, engine);
     }
 
-    @Override
+    @a
     public void showCharacteristics() {
         System.out.println("ICEV Characteristics");
         

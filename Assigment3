@@ -1,0 +1,107 @@
+// Class for Manufacture
+class Manufacture {
+    private String manufacturerName;
+    private String manufacturingDate;
+    
+    public String getManufacturerName() {
+        return manufacturerName;
+    }
+
+    public void setManufacturerName(String manufacturerName) {
+        this.manufacturerName = manufacturerName;
+    }
+
+    public String getManufacturingDate() {
+        return manufacturingDate;
+    }
+
+    public void setManufacturingDate(String manufacturingDate) {
+        this.manufacturingDate = manufacturingDate;
+    }
+}
+
+    abstract class Vehicle {
+    private Manufacture manufacture;
+    private Engine engine;
+
+    public Vehicle(Manufacture manufacture, Engine engine) {
+        this.manufacture = manufacture;
+        this.engine = engine;
+    }
+
+    public abstract void showCharacteristics();
+    public Manufacture getManufacture() {
+        return manufacture;
+    }
+    public void setManufacture(Manufacture manufacture) {
+        this.manufacture = manufacture;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+}
+    class ICEV extends Vehicle {
+    public ICEV(Manufacture manufacture, Engine engine) {
+        super(manufacture, engine);
+    }
+
+    @Override
+    public void showCharacteristics() {
+        System.out.println("ICEV Characteristics");
+        
+    }
+}
+
+
+class BEV extends Vehicle {
+    public BEV(Manufacture manufacture, Engine engine) {
+        super(manufacture, engine);
+    }
+
+    @a
+    public void showCharacteristics() {
+        System.out.println("BEV Characteristics");
+        
+    }
+}
+
+
+class HybridV extends Vehicle {
+    public HybridV(Manufacture manufacture, Engine engine) {
+        super(manufacture, engine);
+    }
+
+    @a
+    public void showCharacteristics() {
+        System.out.println("HybridV Characteristics");
+        
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        
+        Manufacture manufacture1 = new Manufacture();
+        manufacture1.setManufacturerName("Manufacturer1");
+       manufacture1.setManufacturingDate("2023-01-01");
+
+        
+        Engine combustionEngine = new CombustionEngine("Gasoline", 4);
+        Engine electricEngine = new ElectricEngine("Electricity", "Lithium-ion");
+
+        
+        ICEV icev1 = new ICEV(manufacture1, combustionEngine);
+        BEV bev1 = new BEV(manufacture1, electricEngine);
+        HybridV hybridV1 = new HybridV(manufacture1, combustionEngine);
+
+        
+        Vehicle[] vehicles = {icev1, bev1, hybridV1};
+            for (Vehicle vehicle : vehicles) {
+            vehicle.showCharacteristics();
+        }
+    }
+}

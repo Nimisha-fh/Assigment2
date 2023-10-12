@@ -1,0 +1,31 @@
+
+String modelToFilter = "Sedan";
+        int yearsThreshold = 10; // Cars used for more than 10 years
+        String listFilePath = "List_of_Cars_of_" + modelToFilter + "_more_than_" + yearsThreshold + "_years.txt";
+
+        try {
+            System.out.println("Creating a list of cars of the given model used for more than " + yearsThreshold + " years: " + modelToFilter);
+            FileWriter fileWriter = new FileWriter(listFilePath);
+            fileWriter.write("List of Cars of a given model used for more than " + yearsThreshold + " years: " + modelToFilter);
+            fileWriter.write("\n-------------------------------\n");
+
+            for (Car car : obj) {
+                if (car.model.equalsIgnoreCase(modelToFilter) && (2023 - car.manufacture_year > yearsThreshold)) {
+                    fileWriter.write("ID: " + car.id + "\n");
+                    fileWriter.write("Make: " + car.make + "\n");
+                    fileWriter.write("Model: " + car.model + "\n");
+                    fileWriter.write("Manufacture Year: " + car.manufacture_year + "\n");
+                    fileWriter.write("Color: " + car.color + "\n");
+                    fileWriter.write("Price: " + car.price + "\n");
+                    fileWriter.write("Registration Number: " + car.registration_number + "\n");
+                    fileWriter.write("-------------------------------\n");
+                }
+            }
+
+            fileWriter.close();
+            System.out.println("List of cars saved to: " + listFilePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

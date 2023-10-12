@@ -1,0 +1,26 @@
+try {
+            System.out.println("Creating a list of cars manufactured in " + yearToFilter +
+                    " with price higher than " + priceThreshold);
+            FileWriter fileWriter = new FileWriter(listFilePath);
+            fileWriter.write("List of Cars manufactured in " + yearToFilter +
+                    " with price higher than " + priceThreshold);
+            fileWriter.write("\n-------------------------------\n");
+
+            for (Car car : obj) {
+                if (car.manufacture_year == yearToFilter && car.price > priceThreshold) {
+                    fileWriter.write("ID: " + car.id + "\n");
+                    fileWriter.write("Make: " + car.make + "\n");
+                    fileWriter.write("Model: " + car.model + "\n");
+                    fileWriter.write("Manufacture Year: " + car.manufacture_year + "\n");
+                    fileWriter.write("Color: " + car.color + "\n");
+                    fileWriter.write("Price: " + car.price + "\n");
+                    fileWriter.write("Registration Number: " + car.registration_number + "\n");
+                    fileWriter.write("-------------------------------\n");
+                }
+            }
+
+            fileWriter.close();
+            System.out.println("List of cars saved to: " + listFilePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
